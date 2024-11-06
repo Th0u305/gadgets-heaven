@@ -1,0 +1,122 @@
+[
+    {
+        "title": "Asus ROG Phone 6",
+        "image": "https://smartmania.cz/wp-content/uploads/2022/07/asus-rog-phone-6-katalog-1000x1000.png",
+        "category": "mobile",
+        "price": 999,
+        "description": "High-performance gaming smartphone with advanced cooling system.",
+        "Specification": ["256GB storage", "6.78-inch display", "6000mAh battery"],
+        "availability": true,
+        "rating": 4.7,
+        "color": "Black",
+        "warranty": "1 year"
+    },
+    {
+        "title": "HP Spectre x360",
+        "image": "https://mavark.com/wp-content/uploads/2024/04/HP-Spectre-x360-2-in-1-Laptop.png",
+        "category": "laptop",
+        "price": 1499,
+        "description": "Convertible laptop with touch screen and powerful Intel processor.",
+        "Specification": ["16GB RAM", "512GB SSD", "13.5-inch 4K display"],
+        "availability": true,
+        "rating": 4.8,
+        "color": "Nightfall Black",
+        "warranty": "1 year"
+    },
+    {
+        "title": "Sony Xperia 5 III",
+        "image": "https://storage.comprasmartphone.com/smartphones/sony-xperia-5-iii.png",
+        "category": "mobile",
+        "price": 899,
+        "description": "Compact smartphone with a triple-lens camera and OLED display.",
+        "Specification": ["128GB storage", "6.1-inch display", "4500mAh battery"],
+        "availability": true,
+        "rating": 4.6,
+        "color": "Green",
+        "warranty": "1 year"
+    },
+    {
+        "title": "Lenovo Tab P11 Pro",
+        "image": "https://psrefstuff.lenovo.com/syspool/Sys/Image/Lenovo_Tablets/Tab_P11_Pro/Tab_P11_Pro_CT1_01.png",
+        "category": "tablet",
+        "price": 499,
+        "description": "Tablet with AMOLED display and Dolby Vision for immersive experience.",
+        "Specification": ["128GB storage", "11.5-inch display", "Quad speakers"],
+        "availability": true,
+        "rating": 4.5,
+        "color": "Slate Gray",
+        "warranty": "1 year"
+    },
+    {
+        "title": "Amazfit GTR 3 Pro",
+        "image": "https://shikostore.com/cdn/shop/files/GT3PRO_1024x.png?v=1692176514",
+        "category": "smartwatch",
+        "price": 199,
+        "description": "Smartwatch with health tracking and extended battery life.",
+        "Specification": ["GPS", "SpO2 monitor", "Health metrics"],
+        "availability": true,
+        "rating": 4.4,
+        "color": "Brown Leather",
+        "warranty": "1 year"
+    },
+    {
+        "title": "Sennheiser HD 660 S",
+        "image": "https://shop.daisycomms.co.uk/wp-content/uploads/2022/05/EPOS-Adapt-660-Folded.png",
+        "category": "headphones",
+        "price": 499,
+        "description": "Open-back headphones for detailed sound and balanced tones.",
+        "Specification": ["Dynamic drivers", "Open-back design", "Detachable cable"],
+        "availability": true,
+        "rating": 4.7,
+        "color": "Black",
+        "warranty": "2 years"
+    },
+    {
+        "title": "Razer Blade 15",
+        "image": "https://www.playforce.com.sg/cdn/shop/products/Watermark_c767f95d-ad04-4c4b-b261-120f9ab7b7df_1024x1024.png?v=1665134605",
+        "category": "laptop",
+        "price": 2199,
+        "description": "Gaming laptop with GeForce RTX graphics and Full HD display.",
+        "Specification": ["16GB RAM", "512GB SSD", "15.6-inch 144Hz display"],
+        "availability": true,
+        "rating": 4.7,
+        "color": "Black",
+        "warranty": "1 year"
+    },
+    {
+        "title": "Google Nest Audio",
+        "image": "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1703139657/Croma%20Assets/Entertainment/Speakers%20and%20Media%20Players/Images/223474_mnnfmc.png",
+        "category": "smart speaker",
+        "price": 99,
+        "description": "Smart speaker with high-quality sound and Google Assistant.",
+        "Specification": ["Bluetooth", "Wi-Fi", "Google Assistant"],
+        "availability": true,
+        "rating": 4.5,
+        "color": "Black",
+        "warranty": "1 year"
+    },
+    {
+        "title": "Huawei FreeBuds Pro",
+        "image": "https://cdn.salla.sa/BvdpA/m13QDJP46OXZLQfs1PPrycw6DMdM95Qwz3EnZj6x.png",
+        "category": "earphones",
+        "price": 199,
+        "description": "True wireless earphones with active noise cancellation.",
+        "Specification": ["Bluetooth", "ANC", "30-hour battery life with case"],
+        "availability": true,
+        "rating": 4.4,
+        "color": "Silver Frost",
+        "warranty": "1 year"
+    },
+    {
+        "title": "Samsung Odyssey G9",
+        "image": "https://bermorzone.com.ph/wp-content/uploads/2024/08/Odyssey-Neo-G9-btz-ph-2-1.webp",
+        "category": "monitor",
+        "price": 1499,
+        "description": "Ultra-wide gaming monitor with a curved display and HDR support.",
+        "Specification": ["49-inch", "240Hz refresh rate", "QLED"],
+        "availability": true,
+        "rating": 4.8,
+        "color": "Black",
+        "warranty": "2 years"
+    }
+]

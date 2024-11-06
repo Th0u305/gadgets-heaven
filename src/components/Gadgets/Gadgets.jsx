@@ -14,13 +14,13 @@ const Gadgets = () => {
   const [errorData2, setErrorData2] = useState(true);
 
   useEffect(() => {
-    fetch("../public/Gadgets.json")
+    fetch("./Gadgets.json")
       .then((res) => res.json())
       .then((data) => setGadgets(data));
   }, []);
 
   useEffect(() => {
-    fetch("../Category.json")
+    fetch("./Category.json")
       .then((res) => res.json())
       .then((data) => setBtnCategory(data));
   }, []);

@@ -4,7 +4,7 @@ const Upcoming = () => {
   const [upcoming, setUpcoming] = useState([]);
 
   useEffect(() => {
-    fetch("../public/UpcomingGadgets.json")
+    fetch("./UpcomingGadgets.json")
       .then((res) => res.json())
       .then((data) => setUpcoming(data));
   }, []);

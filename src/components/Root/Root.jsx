@@ -8,8 +8,10 @@ export const VisibilityContext = createContext();
 import { useLocation } from "react-router-dom";
 
 const Root = () => {
+
   const location = useLocation();
 
+  const DynamicTitle = () => {
   useEffect(() => {
     switch (location.pathname) {
       case "/":
@@ -31,6 +33,9 @@ const Root = () => {
         document.title = "Gadget Heaven";
     }
   }, [location]);
+  return null; // This component only sets the title and doesn't render anything
+};
+DynamicTitle()
 
   return (
     <div className="font-sans mx-auto">

@@ -5,13 +5,10 @@ import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 const Wish = ({ setVisible, setVisible2 }) => {
+
   const [wishData, setWishData] = useState([]);
 
-  const addToCart = () => {
-    setVisible2(false);
-    setVisible(true);
-  };
-
+ 
   useEffect(() => {
     const all = localStorage.getItem("wish");
     const data = JSON.parse(all);
@@ -23,12 +20,21 @@ const Wish = ({ setVisible, setVisible2 }) => {
     }
   }, []);
 
+  
+
+  const addToCart = (item) => {
+    setVisible2(false);
+    setVisible(true);    
+  };
+
+
+ 
   return (
-    <div className="grid grid-col-1 gap-12">
+    <div className="grid grid-col-1">
       {wishData.length > 0 ? (
         wishData.map((item) => (
-          <div key={item.id} className="flex justify-center items-center flex-col md:flex-row ">
-            <div className="flex justify-center items-center flex-col md:flex-row border-2 gap-5 rounded-3xl p-5">
+          <div key={item.id} className="flex justify-between items-center flex-col md:flex-row ">
+            <div className="flex justify-start items-center flex-col md:flex-row border-2 gap-8 rounded-3xl p-5">
               <div className=" bg-[#ECECEC] rounded-3xl p-3 md:w-1/2 lg:w-[20%] xl:w-[15%]">
                 <img className="" src={item.image} alt="" />
               </div>
@@ -39,7 +45,7 @@ const Wish = ({ setVisible, setVisible2 }) => {
                   Price <FontAwesomeIcon icon={faDollarSign} /> {item.price}
                 </p>
                 <button
-                  onClick={() => addToCart()}
+                  onClick={() => addToCart(item)}
                   className="btn btn-lg text-lg font-semibold bg-[#9538E2] rounded-full text-white"
                 >
                   Add To Card <FontAwesomeIcon icon={faCartShopping} />

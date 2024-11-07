@@ -9,7 +9,8 @@
         "availability": true,
         "rating": 4.7,
         "color": "Black",
-        "warranty": "1 year"
+        "warranty": "1 year",
+        "id":1
     },
     {
         "title": "HP Spectre x360",
@@ -21,7 +22,8 @@
         "availability": true,
         "rating": 4.8,
         "color": "Nightfall Black",
-        "warranty": "1 year"
+        "warranty": "1 year",
+        "id":2
     },
     {
         "title": "Sony Xperia 5 III",
@@ -33,7 +35,8 @@
         "availability": true,
         "rating": 4.6,
         "color": "Green",
-        "warranty": "1 year"
+        "warranty": "1 year",
+        "id":3
     },
     {
         "title": "Lenovo Tab P11 Pro",
@@ -45,7 +48,8 @@
         "availability": true,
         "rating": 4.5,
         "color": "Slate Gray",
-        "warranty": "1 year"
+        "warranty": "1 year",
+        "id":4
     },
     {
         "title": "Amazfit GTR 3 Pro",
@@ -57,7 +61,8 @@
         "availability": true,
         "rating": 4.4,
         "color": "Brown Leather",
-        "warranty": "1 year"
+        "warranty": "1 year",
+        "id":5
     },
     {
         "title": "Sennheiser HD 660 S",
@@ -69,7 +74,8 @@
         "availability": true,
         "rating": 4.7,
         "color": "Black",
-        "warranty": "2 years"
+        "warranty": "2 years",
+        "id":6
     },
     {
         "title": "Razer Blade 15",
@@ -81,7 +87,8 @@
         "availability": true,
         "rating": 4.7,
         "color": "Black",
-        "warranty": "1 year"
+        "warranty": "1 year",
+        "id":7
     },
     {
         "title": "Google Nest Audio",
@@ -93,7 +100,8 @@
         "availability": true,
         "rating": 4.5,
         "color": "Black",
-        "warranty": "1 year"
+        "warranty": "1 year",
+        "id":8
     },
     {
         "title": "Huawei FreeBuds Pro",
@@ -105,7 +113,8 @@
         "availability": true,
         "rating": 4.4,
         "color": "Silver Frost",
-        "warranty": "1 year"
+        "warranty": "1 year",
+        "id":9
     },
     {
         "title": "Samsung Odyssey G9",
@@ -117,6 +126,7 @@
         "availability": true,
         "rating": 4.8,
         "color": "Black",
-        "warranty": "2 years"
+        "warranty": "2 years",
+        "id":10
     }
 ]

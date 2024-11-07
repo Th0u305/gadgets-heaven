@@ -1,6 +1,5 @@
 {
-    "rewrites":[
-        {"source": "/(.*)", "destination": "/"},
-        { "src": "/(.*)", "status": 404, "dest": "./components/ErrorPage/ErrorPage" }
+    "rewrites": [
+      { "source": "/(.*)", "destination": "/index.html" }
     ]
   }

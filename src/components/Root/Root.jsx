@@ -12,6 +12,17 @@ const Root = () => {
   const [navWish, setNavWish] = useState(0);
   const [number, setNumber] = useState(0);
   const [deleteItem, setDeleteItem] = useState([]);
+  const [upcoming, setUpcoming] = useState([]);
+  const [upcomingBtn , setUpcomingBtn] = useState([]);
+  
+
+  useEffect(() => {
+    fetch("./UpcomingGadgets.json")
+      .then((res) => res.json())
+      .then((data) => setUpcoming(data))
+  }, []);
+
+ 
 
 
   window.onload = function () {
@@ -67,7 +78,11 @@ const Root = () => {
             deleteItem,
             setDeleteItem,
             navWish,
-            setNavWish
+            setNavWish,
+            upcoming,
+            setUpcoming,
+            upcomingBtn,
+            setUpcomingBtn
           }}
         >
           <Navbar></Navbar>

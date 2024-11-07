@@ -1,19 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
 import { VisibilityContext } from "../Root/Root";
+import { NavLink } from "react-router-dom";
 
 const Upcoming = () => {
-  const [upcoming, setUpcoming] = useState([]);
+  const {upcoming, setUpcoming} = useContext(VisibilityContext);
+  const {upcomingBtn , setUpcomingBtn} = useContext(VisibilityContext);
 
-  useEffect(() => {
-    fetch("./UpcomingGadgets.json")
-      .then((res) => res.json())
-      .then((data) => setUpcoming(data))
-  }, []);
+  const viewDetails = (id) =>{
+    if (id !== "") {
+      localStorage.setItem("upData", JSON.stringify(id))      
+    }
+    else{
+      return [];
+    }
+  }
+ 
 
   return (
     <div className="card rounded-3xl grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 w-[80%] mx-auto mt-20">
-      {upcoming.map((upGadgets,index) => (
-        <div key={index} className="rounded-3xl p-10 shadow-md border-t-2">
+      {upcoming.map((upGadgets) => (
+        <div key={upGadgets.id} className="rounded-3xl p-10 shadow-md border-t-2">
           <figure>
             <img className="bg-[#D9D9D9] rounded-3xl p-8" src={upGadgets.image}/>
           </figure>
@@ -22,9 +28,12 @@ const Upcoming = () => {
             <h4 className="font-semibold ">Price:{upGadgets.price}</h4>
             <p className="font-semibold ">warranty:{upGadgets.warranty}</p>
             <div className="card-actions ">
-              <button className="btn w-[11em] border-2 border-[#9538E2] text-[#9538E2] text-lg rounded-3xl">
-                View Details
-              </button>
+            <NavLink 
+                    to="/details"
+                    onClick={(()=> viewDetails(upGadgets), setUpcomingBtn("upcoming"))}
+                    className="btn w-[11em] border-2 border-[#9538E2] text-[#9538E2] text-lg rounded-3xl">
+                    View Details
+            </NavLink>
             </div>
           </div>
         </div>

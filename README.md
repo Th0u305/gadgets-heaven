@@ -1,10 +1,10 @@
-<h1 align="center" id="title">Cricket Player Auction landing page</h1>
+<h1 align="center" id="title">Simple Gadgets Shop</h1>
 <br/>
 <p id="description">Gadget Gears is an online store specializing in the latest and most reliable technology products. We offer a diverse range of gadgets, including smartphones, laptops, tablets, earphones, headphones, and smartwatches from top brands. Our mission is to provide customers with high-quality, innovative tech at competitive prices, catering to both tech enthusiasts and everyday users. Each product page features detailed specifications, reviews, and user ratings, helping customers make informed decisions. Whether you're upgrading your mobile device, seeking a new laptop, or looking for the perfect wearable, Gadget Gears has something for everyone in the world of tech</p>
 <br/>
 <h1>😊Live Link:</h1>
 
-<!-- <h3>https://cricket-team-ten.vercel.app/</h3> -->
+<h3>https://gadgets-heaven-kohl.vercel.app/</h3>
 
   <br/>
 

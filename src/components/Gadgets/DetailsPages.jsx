@@ -8,22 +8,31 @@ import { VisibilityContext } from "../Root/Root";
 export const  NavCartLength = createContext();
 
 
-
-const DetailsPages = () => {
+const DetailsPages = ({visible}) => {
 
   const [singleDevice, setSingleDevice] = useState([]);
   const [isAvailable, setIsAvailable] = useState(false);
   const [isAvailable2, setIsAvailable2] = useState(false);
   const {navCart, setNavCart} = useContext(VisibilityContext);
   const {navWish, setNavWish} = useContext(VisibilityContext);
-
+  const { upcomingBtn, setUpcomingBtn } = useContext(VisibilityContext);
+  
 
 
   // Check if the item exists in local storage when component loads
 
   useEffect(() => {
     const item = JSON.parse(localStorage.getItem("device"));
-    setSingleDevice(item);
+    const item2 = JSON.parse(localStorage.getItem("upData"));
+    
+    if (upcomingBtn !== "upcoming") {
+      setSingleDevice(item);
+    }
+    else{
+      setSingleDevice(item2)
+    }
+
+
 
     // Check if the item is already in the "dashboard" list
     const all = localStorage.getItem("dashboard");
@@ -35,6 +44,7 @@ const DetailsPages = () => {
       }
     }
   }, []);
+
 
 
   const addToCart = () => {
@@ -60,6 +70,8 @@ const DetailsPages = () => {
     }
   };
 
+
+
   const addToDash = (item) => {
     const existingItems = addToDasAll();
     const isAlreadyInCart = existingItems.find((storedItem) => storedItem.id === item.id);
@@ -77,8 +89,10 @@ const DetailsPages = () => {
 
 
 
-////////////////////   wish list
 
+
+
+////////////////////   wish list
 
 
 const addToWish = () => {
@@ -90,8 +104,8 @@ const addToWish = () => {
   else{
     setNavWish(all.length)
   }
-  
 };
+
 
 const addToDasAll2 = () => {
   const all = localStorage.getItem("wish");
@@ -108,9 +122,9 @@ const addToDasAll2 = () => {
   }
 };
 
+
 const addToDash2 = (item) => {
-  console.log(item);
-  
+
   const existingItems = addToDasAll2();
   const isAlreadyInCart = existingItems.find(
     (storedItem) => storedItem.id === item.id);
@@ -125,7 +139,6 @@ const addToDash2 = (item) => {
     setIsAvailable2(true);
   }
 };
-
 
 
 

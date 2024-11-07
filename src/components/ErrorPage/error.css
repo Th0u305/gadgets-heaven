@@ -1,4 +1,4 @@
-.container555 {
+/* .container555 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,9 +33,9 @@
 .cta {
   font-weight: 500;
   margin-top: 2rem;
-}
+} */
 
-.cta-back {
+/* .cta-back {
   padding: 12px 20px;
   font-size: 18px;
   background-color: #333;
@@ -72,10 +72,9 @@
 .cta-back:active {
   transform: scale(0.9);
   transition: transform 0.2s ease;
-}
+} */
 
 .hero-img {
-  height: 70vh;
   animation: MoveUpDown 2s ease-in-out infinite alternate-reverse both;
 }
 
@@ -89,7 +88,7 @@
   }
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .container555 {
     flex-direction: column;
   }
@@ -100,4 +99,4 @@
     margin-bottom: 2rem;
     text-align: justify;
   }
-}
+} */

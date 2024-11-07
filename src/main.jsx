@@ -65,6 +65,10 @@ const router = createBrowserRouter([
         path: "upcoming",
         element: <Upcoming></Upcoming>,
       },
+      {
+        path: "*",
+        element: <ErrorPage />,
+      }      
     ],
   },
 ]);

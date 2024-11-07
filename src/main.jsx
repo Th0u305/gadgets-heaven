@@ -58,6 +58,10 @@ const router = createBrowserRouter([
         element: <Dashboard></Dashboard>,
       },
       {
+        path: "home/dashboard",
+        element: <Dashboard></Dashboard>,
+      },
+      {
         path: "upcoming",
         element: <Upcoming></Upcoming>,
       },

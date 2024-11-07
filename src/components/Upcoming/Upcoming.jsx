@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { VisibilityContext } from "../Root/Root";
 
 const Upcoming = () => {
   const [upcoming, setUpcoming] = useState([]);
@@ -6,18 +7,17 @@ const Upcoming = () => {
   useEffect(() => {
     fetch("./UpcomingGadgets.json")
       .then((res) => res.json())
-      .then((data) => setUpcoming(data));
+      .then((data) => setUpcoming(data))
   }, []);
 
-
   return (
-    <div className="card rounded-3xl grid grid-cols-3 gap-12 w-[80%] mx-auto mt-20">
+    <div className="card rounded-3xl grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 w-[80%] mx-auto mt-20">
       {upcoming.map((upGadgets,index) => (
-        <div key={index} className="rounded-3xl p-10 shadow-md">
+        <div key={index} className="rounded-3xl p-10 shadow-md border-t-2">
           <figure>
             <img className="bg-[#D9D9D9] rounded-3xl p-8" src={upGadgets.image}/>
           </figure>
-          <div className="card-body space-y-2">
+          <div className="card-body space-y-2 justify-center items-center text-center">
             <h2 className="card-title text-2xl font-semibold">{upGadgets.title}</h2>
             <h4 className="font-semibold ">Price:{upGadgets.price}</h4>
             <p className="font-semibold ">warranty:{upGadgets.warranty}</p>

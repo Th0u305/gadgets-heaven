@@ -4,15 +4,17 @@ import Cart from "./Cart";
 import Wish from "./Wish";
 import ani from "../../assets/ccc.gif";
 import { Link } from "react-router-dom";
+import { VisibilityContext } from "../Root/Root";
 
 export const DashboardData = createContext();
+
 const Dashboard = () => {
   const [visible, setVisible] = useState(true);
   const [visible2, setVisible2] = useState(false);
-  const [number, setNumber] = useState(0);
-
+  const {number, setNumber} = useContext(VisibilityContext)
   const [dashData, setDashData] = useState([]);
-
+  const {deleteItem, setDeleteItem} = useContext(VisibilityContext);
+  
   useEffect(() => {
     const all = localStorage.getItem("dashboard");
     const data = JSON.parse(all);
@@ -24,15 +26,22 @@ const Dashboard = () => {
     }
   }, []);
 
-  const handelBtn = (id) => {
+
+  const handelBtn = (id, itemId, price) => {
     if (id === "sort") {
       const sorted = [...dashData].sort((a, b) => b.price - a.price);
       setDashData(sorted);
     } else if (id === "purchase") {
       setNumber(0);
       localStorage.removeItem("dashboard");
+    }else if(id === "remove"){
+      const filterDelete = dashData.filter((item => item.id !== itemId));
+      setDashData(filterDelete);
+      localStorage.setItem("dashboard", JSON.stringify(filterDelete));
+      setNumber(number - price);
     }
   };
+  
 
   const cartBtn = () => {
     setVisible(true);
@@ -56,28 +65,27 @@ const Dashboard = () => {
       setNumber(totalSum);
     }
   }, []);
-
-
+  
 
   return (
     <DashboardData.Provider value={{ dashData, setDashData }}>
       <div className=" text-center">
-        <div className="bg-[#9538E2] p-20 mb-20 space-y-5 rounded-b-3xl">
+        <div className="bg-[#9538E2] p-10 mb-20 space-y-5 rounded-b-3xl">
           <h1 className="text-5xl font-semibold text-white">Dashboard</h1>
-          <p className="text-lg text-white w-1/2 mx-auto">
+          <p className="text-lg text-white mx-auto lg:w-[80%]">
             Explore the latest gadgets that will take your experience to the
             next level. From smart devices to the coolest accessories, we have
             it all!
           </p>
-          <div className="space-x-5">
+          <div className="space-x-5 flex justify-center items-center">
             <button
-              className="btn w-[8em] h-[2.5em] text-2xl font-semibold rounded-full"
+              className="btn w-[6em] md:w-[8em] h-[2.5em] text-2xl font-semibold rounded-full"
               onClick={() => cartBtn()}
             >
               Cart
             </button>
             <button
-              className="btn w-[8em] h-[2.5em] text-2xl font-semibold rounded-full"
+              className="btn w-[6em] md:w-[8em] h-[2.5em] text-2xl font-semibold rounded-full"
               onClick={() => wishBtn()}
             >
               Wishlist
@@ -87,17 +95,18 @@ const Dashboard = () => {
 
         <div className=" container mx-auto mb-12 w-full">
           {visible && (
-            <div className="flex flex-row justify-between items-center">
-              <div>
-                <h1 className="text-3xl font-bold">Cart</h1>
-              </div>
-              <div className="flex flex-row justify-between items-center gap-5">
+            <div className="flex flex-col md:flex-row justify-between items-center lg:items-end space-y-5">
+              <div className="space-y-5 flex flex-col justify-between items-center md:items-start lg:items-end lg:flex-row w-auto">
+                <h1 className="text-3xl font-bold mr-12">Cart</h1>
                 <h1 className="text-3xl font-bold mr-10">
                   Total Cost: {number}{" "}
                 </h1>
+              </div>
+
+              <div className="flex flex-col justify-between items-center gap-5 md:flex-row">
                 <button
                   onClick={() => handelBtn("sort")}
-                  className="btn w-[10em] text-xl font-semibold rounded-full h-[3.5em]"
+                  className="btn w-[10em] text-xl font-semibold rounded-full h-[3.5em] border-2 border-gray-300"
                 >
                   Sort by Price <img src={logoSetting} alt="" />
                 </button>
@@ -107,7 +116,7 @@ const Dashboard = () => {
                   }
                   className="btn w-[10em] text-xl font-semibold rounded-full bg-[#9538E2] text-white h-[3.5em]"
                 >
-                  <button 
+                  <button
                     onClick={() => handelBtn("purchase")}
                     className="w-full h-full"
                   >
@@ -120,7 +129,7 @@ const Dashboard = () => {
         </div>
 
         <div className="p-12 bg-white rounded-3xl shadow-md">
-          {visible && <Cart></Cart>}
+          {visible && <Cart handelBtn={handelBtn}></Cart>}
           <>
             {visible2 && (
               <Wish setVisible={setVisible} setVisible2={setVisible2}></Wish>
@@ -137,9 +146,11 @@ const Dashboard = () => {
               </h1>
             </div>
             <div className="modal-action">
-              <form  method="dialog" className="w-full">
-                <button  type="submit"
-                  className="btn w-[15em] h-[3em] border-2 border-[#9538E2] text-xl outline-none">
+              <form method="dialog" className="w-full">
+                <button
+                  type="submit"
+                  className="btn w-[15em] h-[3em] border-2 border-[#000000] text-xl outline-none"
+                >
                   <Link to="/">Close</Link>
                 </button>
               </form>

@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className="mt-32 bg-white p-16">
+    <div className="mt-16 bg-white p-10 space-y-5">
       <div className="text-center space-y-5">
         <h1 className="text-5xl font-semibold">
           Gadget Heaven
@@ -8,10 +8,10 @@ const Footer = () => {
         <p className="text-gray-600 ">
           Leading the way in cutting-edge technology and innovation.
         </p>
-        <div class="divider w-[70%] mx-auto"></div>
+        <div class="divider w-[90%] md:w-[80%] xl:w-[70%] mx-auto"></div>
         </div>
-      <footer className="footer items-center justify-evenly ">
-        <nav >
+      <footer className="footer items-center justify-evenly">
+        <nav>
           <h6 className="footer-title text-lg text-black">Services</h6>
           <a className="link link-hover text-lg text-gray-600">Product Support</a>
           <a className="link link-hover text-lg text-gray-600"> Order Tracking</a>

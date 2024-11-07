@@ -4,6 +4,7 @@ import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import toast from "react-hot-toast";
+import { VisibilityContext } from "../Root/Root";
 export const  NavCartLength = createContext();
 
 
@@ -13,6 +14,9 @@ const DetailsPages = () => {
   const [singleDevice, setSingleDevice] = useState([]);
   const [isAvailable, setIsAvailable] = useState(false);
   const [isAvailable2, setIsAvailable2] = useState(false);
+  const {navCart, setNavCart} = useContext(VisibilityContext);
+  const {navWish, setNavWish} = useContext(VisibilityContext);
+
 
 
   // Check if the item exists in local storage when component loads
@@ -32,9 +36,19 @@ const DetailsPages = () => {
     }
   }, []);
 
+
   const addToCart = () => {
     addToDash(singleDevice);
+    const all = JSON.parse(localStorage.getItem("dashboard"));
+    if (all === null) {
+      return [];
+    }
+    else{
+      setNavCart(all.length)
+    }
   };
+
+
 
   const addToDasAll = () => {
     const all = localStorage.getItem("dashboard");
@@ -69,6 +83,14 @@ const DetailsPages = () => {
 
 const addToWish = () => {
   addToDash2(singleDevice);
+  const all = JSON.parse(localStorage.getItem("wish"));
+  if (all === null) {
+    return [];
+  }
+  else{
+    setNavWish(all.length)
+  }
+  
 };
 
 const addToDasAll2 = () => {
@@ -95,6 +117,7 @@ const addToDash2 = (item) => {
 
   if (isAlreadyInCart) {
     toast.error("This Product Already Exists in your Wish List");
+    setIsAvailable2(true);
   } else {
     toast.success("Successfully Added To Wishlist");
     existingItems.push(item);
@@ -107,22 +130,21 @@ const addToDash2 = (item) => {
 
 
   return (
-    <NavCartLength.Provider value={{singleDevice}}>
-    <div className="h-[100vh]">
-      <div className="bg-[#9538E2] text-center relative h-[50vh] flex flex-col justify-start items-center pt-16 rounded-b-3xl">
-        <h1 className="text-5xl font-semibold text-white">Product Details</h1>
-        <p className="text-lg font-semibold text-white">
+    <div className="h-[140vh] md:h-[110vh] 2xl:h-[100vh]">
+      <div className="bg-[#9538E2] text-center relative h-[50vh] flex flex-col justify-start items-center rounded-b-3xl space-y-5">
+        <h1 className="text-4xl lg:text-5xl mt-12 font-semibold text-white">Product Details</h1>
+        <p className="text-md md:text-lg font-semibold text-white w-[80%]">
           Explore the latest gadgets that will take your experience to the next
           level. From smart devices to the coolest accessories, we have it all!
         </p>
       </div>
       <div
-        className="flex flex-row border-2 justify-center items-center z-50
-                        absolute top-1/2 left-0 right-0 mx-auto bg-white rounded-3xl w-1/2 p-8">
-        <div className="">
+        className="flex flex-col md:flex-row border-2 justify-center items-center z-50
+                        absolute top-1/2 left-0 right-0 mx-auto bg-white rounded-3xl w-[80%] xl:w-[70%] 2xl:w-[50%] p-8">
+        <div className=" md:w-[60%] lg:w-full">
           <img className="" src={singleDevice.image} alt="" />
         </div>
-        <div className="space-y-2">
+        <div className="space-y-2 md:w-1/2 lg:w-[70%]">
           <h1 className="text-3xl font-semibold">{singleDevice.title}</h1>
           <p className="text-lg font-semibold">
             Price <FontAwesomeIcon icon={faDollarSign} /> {singleDevice.price}
@@ -174,7 +196,7 @@ const addToDash2 = (item) => {
           <p className="text-lg text-gray-700">
             warranty: <a>{singleDevice.warranty}</a>
           </p>
-          <div className="space-x-4 flex flex-row justify-start items-center">
+          <div className="space-x-4 flex flex-row justify-start items-center w-full">
             <button
               onClick={() => addToCart()}
               disabled={isAvailable}
@@ -189,7 +211,6 @@ const addToDash2 = (item) => {
         </div>
       </div>
     </div>
-    </NavCartLength.Provider>
   );
 };
 

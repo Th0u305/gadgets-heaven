@@ -33,30 +33,29 @@ const Gadgets = () => {
 
   const loadByCategory = (id) => {
     if (id === "All Products") {
-        return setNewGadgets(gadgets);
+      return setNewGadgets(gadgets);
     } else {
       const filteredBYCat = [...gadgets].filter((cats) => cats.category === id);
       setNewGadgets(filteredBYCat);
       if (filteredBYCat.length === 0 && filteredBYCat !== "All Products") {
         setErrorData(true);
+      } else {
+        setErrorData(false);
       }
-      else{
-        setErrorData(false)
-      }
-      
     }
   };
 
   return (
-    <div className="flex flex-row justify-center items-top gap-8">
-        <div>
-          <div className="grid grid-rows-6 gap-3 bg-white w-fit rounded-3xl p-5 shadow">
+    <div className="flex flex-col 2xl:flex-row 2xl:items-start justify-center items-center gap-8">
+        <div className="">
+          <div className="grid grid-rows-2 w-max grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-rows-1 2xl:grid-cols-1 
+                          justify-items-center gap-5 bg-white rounded-3xl p-5 shadow">
             {btnCategory.map((category) => (
               <button key={category.id}>
                 <NavLink
                   to={`category/${category.category}`}
                   onClick={() => loadByCategory(category.category)}
-                  className="btn w-[10em] h-[4em] rounded-3xl text-lg"
+                  className="btn w-[9em] xl:w-[10em] h-[4em] rounded-3xl text-lg"
                 >
                   {category.category}
                 </NavLink>
@@ -73,7 +72,7 @@ const Gadgets = () => {
         )}
 
         {errorData2 && (
-          <div className="grid grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
             {newGadgets.map((gadget) => (
               <Gadget key={gadget.id} gadget={gadget}></Gadget>
             ))}
@@ -82,5 +81,6 @@ const Gadgets = () => {
     </div>
   );
 };
+
 
 export default Gadgets;

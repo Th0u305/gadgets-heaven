@@ -1,4 +1,4 @@
-import React, { PureComponent, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import {
   BarChart,
@@ -37,17 +37,17 @@ const Statistics = () => {
 
   return (
     <div className="rounded-b-3xl flex flex-col gap-12 justify-center bg-[#f0f0f0]">
-      <div className="space-x-5 bg-[#9538E2] w-full h-[30vh] items-center text-center flex flex-col justify-center gap-8 rounded-b-3xl">
+      <div className="bg-[#9538E2] w-full h-[50vh]  items-center text-center flex flex-col justify-center gap-8 rounded-b-3xl">
         <h1 className="text-5xl text-white">Statistics</h1>
-        <p className="text-lg text-white">
+        <p className="text-lg text-white w-[80%]">
           Explore the latest gadgets that will take your experience to the next
           level. From smart devices to the coolest accessories, we have it all!
         </p>
 
-        <div className="space-x-5">
+        <div className="flex justify-center items-center w-full gap-3">
           <button
             onClick={() => stats("all")}
-            className="btn btn-lg rounded-full outline-none hover:outline-none w-[12em] 
+            className="btn btn-lg rounded-full outline-none hover:outline-none w-[9em] md:w-[12em]
                                   transition-all duration-300 ease-in-out hover:scale-105
                                    focus:bg-gray-700 focus:text-white"
           >
@@ -55,7 +55,7 @@ const Statistics = () => {
           </button>
           <button
             onClick={() => stats("upcoming")}
-            className="btn btn-lg rounded-full outline-none hover:outline-none w-[12em] 
+            className="btn btn-lg rounded-full outline-none hover:outline-none w-[9em] md:w-[12em]
                                   transition-all duration-300 ease-in-out hover:scale-105
                                    focus:bg-gray-700 focus:text-white"
           >
@@ -63,14 +63,13 @@ const Statistics = () => {
           </button>
         </div>
       </div>
-      <div className="w-full bg-white shadow rounded-3xl p-12">
+      <div className="w-full bg-white shadow rounded-3xl p-5 md:p-12 mt-12">
         <ResponsiveContainer width="100%" height={500}>
           <BarChart
             width={500}
             height={300}
             data={statsData}
             stackOffset="sign"
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="title" />

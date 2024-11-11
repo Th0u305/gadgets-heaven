@@ -27,13 +27,21 @@ const Wish = ({ setVisible, setVisible2 }) => {
     setVisible(true);    
   };
 
+  const handelBtn =(id, item2)=>{
+    if (id === "removeWish") {
+      const filterDelete = wishData.filter((item) => item.id !== item2.id);
+      setWishData(filterDelete);
+      localStorage.setItem("wish", JSON.stringify(filterDelete));
+    }
+  }
+
 
  
   return (
     <div className="grid grid-col-1">
       {wishData.length > 0 ? (
-        wishData.map((item) => (
-          <div key={item.id} className="flex justify-between items-center flex-col md:flex-row ">
+        wishData.map((item, index) => (
+          <div key={index} className="flex justify-between items-center flex-col md:flex-row ">
             <div className="flex justify-start items-center flex-col md:flex-row border-2 gap-8 rounded-3xl p-5">
               <div className=" bg-[#ECECEC] rounded-3xl p-3 md:w-1/2 lg:w-[20%] xl:w-[15%]">
                 <img className="" src={item.image} alt="" />
@@ -53,7 +61,7 @@ const Wish = ({ setVisible, setVisible2 }) => {
               </div>
             </div>
             <div>
-              <a className="btn btn-ghost btn-circle">
+            <a className="btn btn-ghost btn-circle" onClick={()=> handelBtn("removeWish", item)}>
                 <FontAwesomeIcon className="text-3xl" icon={faCircleXmark} />
               </a>
             </div>

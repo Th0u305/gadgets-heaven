@@ -18,7 +18,7 @@ const Dashboard = () => {
   useEffect(() => {
     const all = localStorage.getItem("dashboard");
     const data = JSON.parse(all);
-
+    
     if (data !== null) {
       setDashData(data);
     } else {
@@ -45,7 +45,7 @@ const Dashboard = () => {
       }
       setNumber(0);
       localStorage.removeItem("dashboard");
-    } else if (id === "remove") {
+    }else if (id === "remove") {
       const filterDelete = dashData.filter((item) => item.id !== itemId);
       setDashData(filterDelete);
       localStorage.setItem("dashboard", JSON.stringify(filterDelete));

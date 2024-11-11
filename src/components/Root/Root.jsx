@@ -19,11 +19,10 @@ const Root = () => {
   useEffect(() => {
     fetch("./UpcomingGadgets.json")
       .then((res) => res.json())
-      .then((data) => setUpcoming(data))
+      .then((data) => localStorage.setItem("upData", JSON.stringify(data)))
   }, []);
 
- 
-
+  
 
   window.onload = function () {
     const all = localStorage.getItem("dashboard");

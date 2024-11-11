@@ -6,7 +6,7 @@ import { DashboardData } from "./Dashboard";
 
 const Cart = ({handelBtn}) => {
 
-  const {dashData, setDashData} = useContext(DashboardData)
+  const {dashData} = useContext(DashboardData)
 
  
   return (

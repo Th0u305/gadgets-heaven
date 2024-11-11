@@ -8,31 +8,35 @@ import { VisibilityContext } from "../Root/Root";
 export const  NavCartLength = createContext();
 
 
-const DetailsPages = ({visible}) => {
+const DetailsPages = () => {
 
   const [singleDevice, setSingleDevice] = useState([]);
   const [isAvailable, setIsAvailable] = useState(false);
   const [isAvailable2, setIsAvailable2] = useState(false);
-  const {navCart, setNavCart} = useContext(VisibilityContext);
-  const {navWish, setNavWish} = useContext(VisibilityContext);
-  const { upcomingBtn, setUpcomingBtn } = useContext(VisibilityContext);
+  const { setNavCart} = useContext(VisibilityContext);
+  const {setNavWish} = useContext(VisibilityContext);
+  const { upcomingBtn } = useContext(VisibilityContext);
+  const [preOrder, setPreOrder] = useState(true)
   
 
-
+  
   // Check if the item exists in local storage when component loads
 
   useEffect(() => {
     const item = JSON.parse(localStorage.getItem("device"));
-    const item2 = JSON.parse(localStorage.getItem("upData"));
+    const item2 = JSON.parse(localStorage.getItem("upDataDetails"));
     
-    if (upcomingBtn !== "upcoming") {
+    
+    if (upcomingBtn === 'up') {
+      setSingleDevice(item2);
+      setPreOrder(false)
+      return;
+    }
+    else if (upcomingBtn === "singleDev") {
       setSingleDevice(item);
+      return;      
     }
-    else{
-      setSingleDevice(item2)
-    }
-
-
+    
 
     // Check if the item is already in the "dashboard" list
     const all = localStorage.getItem("dashboard");
@@ -79,6 +83,11 @@ const DetailsPages = ({visible}) => {
     if (isAlreadyInCart) {
       toast.error("This Product Already Exists in your Cart");
     } else {
+      if (upcomingBtn === "up") {
+        toast.success("Successfully Added To PreOrder List");
+        setIsAvailable(true)
+        return;
+      }
       toast.success("Successfully Added To Cart");
       existingItems.push(item);
       localStorage.setItem("dashboard", JSON.stringify(existingItems));
@@ -143,8 +152,8 @@ const addToDash2 = (item) => {
 
 
   return (
-    <div className="h-[140vh] md:h-[110vh] 2xl:h-[100vh]">
-      <div className="bg-[#9538E2] text-center relative h-[50vh] flex flex-col justify-start items-center rounded-b-3xl space-y-5">
+    <div className="h-[145vh] md:h-[115vh] lg:h-[110vh] xl:h-[115vh] 2xl:h-[90vh]">
+      <div className="bg-[#9538E2] text-center relative flex flex-col justify-start items-center rounded-b-3xl space-y-5 pb-40">
         <h1 className="text-4xl lg:text-5xl mt-12 font-semibold text-white">Product Details</h1>
         <p className="text-md md:text-lg font-semibold text-white w-[80%]">
           Explore the latest gadgets that will take your experience to the next
@@ -153,7 +162,7 @@ const addToDash2 = (item) => {
       </div>
       <div
         className="flex flex-col md:flex-row border-2 justify-center items-center z-50
-                        absolute top-1/2 left-0 right-0 mx-auto bg-white rounded-3xl w-[80%] xl:w-[70%] 2xl:w-[50%] p-8">
+                        absolute top-1/2 2xl:top-[40%] left-0 right-0 mx-auto bg-white rounded-3xl w-[80%] xl:w-[70%] 2xl:w-[50%] p-8">
         <div className=" md:w-[60%] lg:w-full">
           <img className="" src={singleDevice.image} alt="" />
         </div>
@@ -215,7 +224,7 @@ const addToDash2 = (item) => {
               disabled={isAvailable}
               className="btn btn-lg text-lg font-semibold bg-[#9538E2] rounded-full text-white"
             >
-              Add To Card <FontAwesomeIcon icon={faCartShopping} />
+              {preOrder ? "Add To Cart" : "PreOrder"} <FontAwesomeIcon icon={faCartShopping} />
             </button>
             <a className="btn btn-ghost btn-circle"   disabled={isAvailable2} onClick={() => addToWish()}>
               <FontAwesomeIcon className="text-3xl" icon={faHeart} />

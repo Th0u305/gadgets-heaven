@@ -4,20 +4,30 @@ import { NavLink } from "react-router-dom";
 
 const Upcoming = () => {
   const {upcoming, setUpcoming} = useContext(VisibilityContext);
-  const {upcomingBtn , setUpcomingBtn} = useContext(VisibilityContext);
+  const { setUpcomingBtn} = useContext(VisibilityContext);
 
-  const viewDetails = (id) =>{
-    if (id !== "") {
-      localStorage.setItem("upData", JSON.stringify(id))      
+
+  useEffect(()=>{
+    const all = localStorage.getItem("upData")
+    const data = JSON.parse(all);
+    setUpcoming(data)
+  },[])
+
+
+
+  const viewDetails = (id, id2) =>{   
+    if (id) {
+      localStorage.setItem("upDataDetails", JSON.stringify(id))      
+      setUpcomingBtn(id2)      
     }
     else{
       return [];
     }
   }
- 
+
 
   return (
-    <div className="card rounded-3xl grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 w-[80%] mx-auto mt-20">
+    <div className="card rounded-3xl grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 w-[80%] mx-auto mt-14">
       {upcoming.map((upGadgets) => (
         <div key={upGadgets.id} className="rounded-3xl p-10 shadow-md border-t-2">
           <figure>
@@ -30,7 +40,7 @@ const Upcoming = () => {
             <div className="card-actions ">
             <NavLink 
                     to="/details"
-                    onClick={(()=> viewDetails(upGadgets), setUpcomingBtn("upcoming"))}
+                    onClick={(()=> viewDetails(upGadgets, "up"))}
                     className="btn w-[11em] border-2 border-[#9538E2] text-[#9538E2] text-lg rounded-3xl">
                     View Details
             </NavLink>

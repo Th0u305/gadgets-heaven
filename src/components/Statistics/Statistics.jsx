@@ -49,7 +49,7 @@ const Statistics = () => {
             onClick={() => stats("all")}
             className="btn btn-lg rounded-full outline-none hover:outline-none w-[9em] md:w-[12em]
                                   transition-all duration-300 ease-in-out hover:scale-105
-                                   focus:bg-gray-700 focus:text-white"
+                                   focus:bg-gray-700 focus:text-white hover:bg-gray-700 hover:text-white"
           >
             All Gadgets
           </button>
@@ -57,7 +57,7 @@ const Statistics = () => {
             onClick={() => stats("upcoming")}
             className="btn btn-lg rounded-full outline-none hover:outline-none w-[9em] md:w-[12em]
                                   transition-all duration-300 ease-in-out hover:scale-105
-                                   focus:bg-gray-700 focus:text-white"
+                                   focus:bg-gray-700 focus:text-white hover:bg-gray-700 hover:text-white"
           >
             Upcoming Gadgets
           </button>
